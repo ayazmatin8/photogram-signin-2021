@@ -22,11 +22,21 @@ class UsersController < ApplicationController
     save_status = user.save
 
     if save_status == true
+      session.store(:user_id, user.id)
+
       redirect_to("/users/#{user.username}", { :notice => "Welcome, " + user.username + "!"})
     else
-      redirect_to("/user_sign_up")
+      redirect_to("/user_sign_up", { :alert => user.errors.full_message.to_sentence})
     end
   end
+
+  def toast_cookies
+    reset_session
+
+    redirect_to("/", { :notice => "see ya later!"})
+  
+  end
+
 
   def update
     the_id = params.fetch("the_user_id")

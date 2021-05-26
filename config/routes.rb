@@ -47,5 +47,8 @@ Rails.application.routes.draw do
 
   get("/user_sign_in", { :controller => "users", :action => "sign_in_form"})
 
+  get("/user_sign_out", { :controller => "users", :action => "toast_cookies"})
+
+  get("/veryify_credentials", { :controller => "users", :action => "sign_in_form"})
 
 end
