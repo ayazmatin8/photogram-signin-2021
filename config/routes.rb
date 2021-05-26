@@ -42,4 +42,10 @@ Rails.application.routes.draw do
 
   get("/delete_comment/:the_comment_id", { :controller => "comments", :action => "destroy"})
 
+  # USER SIGN UP
+  get("/user_sign_up", { :controller => "users", :action => "new_registration_form"})
+
+  get("/user_sign_in", { :controller => "users", :action => "sign_in_form"})
+
+
 end
