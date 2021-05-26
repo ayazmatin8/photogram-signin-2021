@@ -39,17 +39,15 @@ class UsersController < ApplicationController
     if user == nil
       redirect_to("/user_sign_in", { :alert => "No one by that name here" })
     else
-      redirect_to("/")
+    
+      if user.authenticate(pw)
+        session.store(:user_id, user.id)
+
+        redirect_to("/", { :notice => "Welcome back, " + user.username + "!"})
+      else
+        redirect_to("/user_sign_in", { :alert => "password didn't work"})
+      end
     end
-
-    if user.authenticate(pw)
-      session.store(:user_id, user.id)
-
-      redirect_to("/", { :notice => "Welcome back, " + user.username + "!"})
-    else
-      redirect_to("/user_sign_in", { :alert => "password didn't work"})
-    end
-
   end
 
   def toast_cookies

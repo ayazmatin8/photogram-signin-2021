@@ -49,6 +49,6 @@ Rails.application.routes.draw do
 
   get("/user_sign_out", { :controller => "users", :action => "toast_cookies"})
 
-  post("/veryify_credentials", { :controller => "users", :action => "authenticate"})
+  post("/verify_credentials", { :controller => "users", :action => "authenticate"})
 
 end
